@@ -23,6 +23,7 @@ pub enum Language {
     Html,
     Css,
     Sql,
+    Ada,
     Other,
 }
 
@@ -47,6 +48,7 @@ impl Language {
             "html" | "htm" => Language::Html,
             "css" | "scss" | "less" => Language::Css,
             "sql" => Language::Sql,
+            "ada" | "adb" | "ads" => Language::Ada,
             _ => Language::Other,
         }
     }
@@ -62,8 +64,14 @@ impl Language {
     pub fn has_tree_sitter_support(&self) -> bool {
         matches!(
             self,
-            Language::Rust | Language::Python | Language::TypeScript | Language::JavaScript | Language::Go
-            | Language::Java | Language::Scala
+            Language::Rust
+                | Language::Python
+                | Language::TypeScript
+                | Language::JavaScript
+                | Language::Go
+                | Language::Java
+                | Language::Scala
+                | Language::Ada
         )
     }
 }

@@ -9,7 +9,7 @@ CLI="$PLUGIN_ROOT/skills/coderlm/scripts/coderlm_cli.py"
 STATE_FILE=".claude/coderlm_state/session.json"
 
 # Check server health
-if ! curl -s --max-time 2 http://127.0.0.1:3000/api/v1/health > /dev/null 2>&1; then
+if ! curl --noproxy 127.0.0.1 -s --max-time 2 http://127.0.0.1:3000/api/v1/health > /dev/null 2>&1; then
     echo "[coderlm] Server not running. Start it with: cd server && cargo run -- serve" >&2
     exit 0
 fi

@@ -231,6 +231,7 @@ Same shape as symbols response.
 | Go         | `.go`                         | tree-sitter  |
 | Java       | `.java`                       | tree-sitter  |
 | Scala      | `.scala`, `.sc`               | tree-sitter  |
+| Ada        | `.ada`, `.adb`, `.ads`        | tree-sitter  |
 | SQL        | `.sql`                        | regex        |
 
 Languages with tree-sitter support produce full symbol tables (functions, classes, methods, callers, variables). SQL uses regex fallbacks for variable and definition detection. All other file types appear in the file tree and are searchable via peek/grep, but do not produce symbols.

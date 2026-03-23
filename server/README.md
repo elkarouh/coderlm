@@ -181,6 +181,7 @@ Symbol extraction (functions, classes, structs, methods, etc.) is available for:
 | Go         | `.go`                         | tree-sitter  |
 | Java       | `.java`                       | tree-sitter  |
 | Scala      | `.scala`, `.sc`               | tree-sitter  |
+| Ada        | `.ada`, `.adb`, `.ads`        | tree-sitter  |
 | SQL        | `.sql`                        | regex        |
 
 Languages with tree-sitter support produce full symbol tables (functions, classes, methods, callers, variables). SQL uses regex fallbacks for variable and definition detection. All other file types are indexed in the file tree and available for peek/grep/chunk operations, but do not produce symbols.

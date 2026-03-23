@@ -7,7 +7,12 @@ PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
 CLI="$PLUGIN_ROOT/skills/coderlm/scripts/coderlm_cli.py"
 STATE_FILE=".claude/coderlm_state/session.json"
 
-if [ -f "$STATE_FILE" ] && curl -s --max-time 2 http://127.0.0.1:3000/api/v1/health > /dev/null 2>&1; then
-    python3 "$CLI" save-annotations 2>/dev/null || true
-    python3 "$CLI" cleanup 2>/dev/null || true
+if [ -f "$STATE_FILE" ] && curl --noproxy 127.0.0.1 -s --max-time 2 http://127.0.0.1:3000/api/v1/health > /dev/null 2>&1; then
+    no_proxy=127.0.0.1,localhost python3 "$CLI" save-annotations 2>/dev/null || true
+    no_proxy=127.0.0.1,localhost python3 "$CLI" cleanup 2>/dev/null || true
+fi
+
+# Shutdown the coderlm-server if it is running
+if pkill -f 'coderlm-server serve' 2>/dev/null; then
+    : # server stopped
 fi

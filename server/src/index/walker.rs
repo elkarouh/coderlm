@@ -17,6 +17,7 @@ pub fn scan_directory(root: &Path, file_tree: &Arc<FileTree>, max_file_size: u64
         .git_ignore(true) // respect .gitignore
         .git_global(true)
         .git_exclude(true)
+        .follow_links(true) // follow symlinks into subdirectories
         .build();
 
     let mut count = 0;
